@@ -37,9 +37,9 @@ pipeline {
 
     post {
         always {
-            echo "The job name is: ${env.JOB_NAME}
-            TEST LINEA 1
-            TEST LINEA 2
+            echo "The job name is: ${env.JOB_NAME} \
+            TEST LINEA 1 \
+            TEST LINEA 2 \
             ${env.BUILD_NUMBER}
             "
             echo "The build number is: ${env.BUILD_NUMBER}"
