@@ -37,11 +37,8 @@ pipeline {
 
     post {
         always {
-            echo "The job name is: ${env.JOB_NAME} \
-            TEST LINEA 1 \
-            TEST LINEA 2 \
-            ${env.BUILD_NUMBER}"
-            echo "The build number is: ${env.BUILD_NUMBER}"
+            echo "EMAIL SUBJECT: Pipeline Failed: ${env.JOB_NAME} - Build ${env.BUILD_NUMBER}\
+                  EMAIL BODY: The pipeline ${env.JOB_NAME} with build number #${env.BUILD_NUMBER} has failed."
             junit 'results/*_result.xml'
             cleanWs()
         }
