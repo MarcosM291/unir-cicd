@@ -33,16 +33,19 @@ pipeline {
                 archiveArtifacts artifacts: 'results/*.xml'
             }
         }
+        stage('Print Failed Pipeline Email') {
+            steps {
+                echo "EMAIL SUBJECT: Pipeline Failed: ${env.JOB_NAME} - Build ${env.BUILD_NUMBER}\
+                      EMAIL BODY: The pipeline ${env.JOB_NAME} with build number #${env.BUILD_NUMBER} has failed."
+            }
+        }
     }
 
     post {
         always {
-            echo "EMAIL SUBJECT: Pipeline Failed: ${env.JOB_NAME} - Build ${env.BUILD_NUMBER}\
-                  EMAIL BODY: The pipeline ${env.JOB_NAME} with build number #${env.BUILD_NUMBER} has failed."
             junit 'results/*_result.xml'
             cleanWs()
         }
-
          failure {
             script {
                 emailext body: 'The pipeline $env.JOB_NAME with build number #$env.BUILD_NUMBER has failed.', 
