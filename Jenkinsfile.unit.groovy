@@ -33,12 +33,12 @@ pipeline {
                 archiveArtifacts artifacts: 'results/*.xml'
             }
         }
-    
+    }
+
     post {
         always {
             junit 'results/*_result.xml'
             cleanWs()
         }
     }
-}
 }
