@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Source') {
             steps {
-                git 'https://github.com/srayuso/unir-cicd.git'
+                git 'https://github.com/MarcosM291/unir-cicd.git'
             }
         }
         stage('Build') {
@@ -48,8 +48,8 @@ pipeline {
         }
          failure {
             script {
-                emailext body: 'The pipeline $env.JOB_NAME with build number #$env.BUILD_NUMBER has failed.', 
-                recipientProviders: [buildUser()], subject: 'Pipeline Failed: $env.JOB_NAME - Build $env.BUILD_NUMBER'
+                emailext body: 'The pipeline ${env.JOB_NAME} with build number #${env.BUILD_NUMBER} has failed.', 
+                recipientProviders: [buildUser()], subject: 'Pipeline Failed: ${env.JOB_NAME} - Build ${env.BUILD_NUMBER}'
             }
         }
     }
