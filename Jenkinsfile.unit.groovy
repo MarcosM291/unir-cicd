@@ -37,7 +37,7 @@ pipeline {
 
     post {
         always {
-            echo 'Pipeline $env.JOB_NAME with build number #$env.BUILD_NUMBER'
+            echo 'Pipeline ${env.JOB_NAME} with build number #${env.BUILD_NUMBER}'
             junit 'results/*_result.xml'
             cleanWs()
         }
