@@ -32,7 +32,7 @@ pipeline {
             steps {
                 archiveArtifacts artifacts: 'results/*.xml'
             }
-    }
+        }
     
     post {
         always {
