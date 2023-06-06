@@ -40,5 +40,12 @@ pipeline {
             junit 'results/*_result.xml'
             cleanWs()
         }
+
+         failure {
+            script {
+                emailext body: 'The pipeline $env.JOB_NAME with build number #$env.BUILD_NUMBER has failed.', 
+                recipientProviders: [buildUser()], subject: 'Pipeline Failed: $env.JOB_NAME - Build $env.BUILD_NUMBER'
+            }
+        }
     }
 }
