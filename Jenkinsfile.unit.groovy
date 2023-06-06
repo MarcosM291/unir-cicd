@@ -40,8 +40,7 @@ pipeline {
             echo "The job name is: ${env.JOB_NAME} \
             TEST LINEA 1 \
             TEST LINEA 2 \
-            ${env.BUILD_NUMBER}
-            "
+            ${env.BUILD_NUMBER}"
             echo "The build number is: ${env.BUILD_NUMBER}"
             junit 'results/*_result.xml'
             cleanWs()
