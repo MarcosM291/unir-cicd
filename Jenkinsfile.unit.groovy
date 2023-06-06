@@ -37,7 +37,8 @@ pipeline {
 
     post {
         always {
-            echo 'Pipeline ${env.JOB_NAME} with build number #${env.BUILD_NUMBER}'
+            echo "The job name is: ${env.JOB_NAME}"
+            echo "The build number is: ${env.BUILD_NUMBER}"
             junit 'results/*_result.xml'
             cleanWs()
         }
